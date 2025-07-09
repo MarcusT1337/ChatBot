@@ -35,15 +35,17 @@ def chat(message, history):
         [{"role": "system", "content": system_message}]
         + [{"role": "user", "content": message}]
     )
-    stream = client.chat.completions.create(
-        model=MODEL, messages=messages, stream=True, temperature=0.0
-    )
+    try:
+        stream = client.chat.completions.create(
+            model=MODEL, messages=messages, stream=True, temperature=0.0
+        )
+        response = ""
+        for stream_so_far in stream:
+            response += stream_so_far.choices[0].delta.content or ""
+            yield response
+    except Exception as e:
+        yield f"Error: {str(e)}"
 
-    # Just UI implementation
-    response = ""
-    for stream_so_far in stream:
-        response += stream_so_far.choices[0].delta.content or ""
-        yield response
 
 USERNAME = os.getenv("GRADIO_USERNAME")
 PASSWORD = os.getenv("GRADIO_PASSWORD")
