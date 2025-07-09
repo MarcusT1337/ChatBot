@@ -177,3 +177,10 @@ cython_debug/
 #.idea/
 
 .env
+.idea/
+*.pem
+*.key
+*.crt
+gitkey
+gitkey.pub
+
