@@ -27,8 +27,8 @@ MODEL = "llama-3.3-70b-versatile" #GROQ's model
 
 print(f"LLM_CHOICE: {LLM_CHOICE} - MODEL: {MODEL}")
 
-with open('system_message.txt', 'r') as file:
-    system_message = ' '.join(line.strip() for line in file.readlines())
+#with open('system_message.txt', 'r') as file:
+#    system_message = ' '.join(line.strip() for line in file.readlines())
 
 def chat(message, history):
     messages = (
