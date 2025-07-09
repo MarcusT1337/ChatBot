@@ -46,5 +46,6 @@ def chat(message, history):
         yield response
 USERNAME = os.getenv("GRADIO_USERNAME")
 PASSWORD = os.getenv("GRADIO_PASSWORD")
+system_message = os.getenv("SYSTEM_MESSAGE")
 demo = gr.ChatInterface(fn=chat, type="messages")
 demo.launch(share = True, auth=(USERNAME, PASSWORD))
