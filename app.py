@@ -44,6 +44,9 @@ def chat(message, history):
     for stream_so_far in stream:
         response += stream_so_far.choices[0].delta.content or ""
         yield response
+
+print("USERNAME:", os.getenv("GRADIO_USERNAME"))
+print("PASSWORD:", os.getenv("GRADIO_PASSWORD"))
 USERNAME = os.getenv("GRADIO_USERNAME")
 PASSWORD = os.getenv("GRADIO_PASSWORD")
 system_message = os.getenv("SYSTEM_MESSAGE")
